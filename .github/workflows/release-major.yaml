@@ -1,4 +1,4 @@
-name: Release patch version to clojars
+name: Release major version to clojars
 
 on:
   workflow_dispatch: {}

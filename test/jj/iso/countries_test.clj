@@ -39,5 +39,22 @@
                                 :numeric       "166"
                                 :official-name "Cocos (Keeling) Islands"
                                 :region        "Oceania"
-                                :region-code   "009"}
+                                :region-code   "009"}))
+
+
+(deftest alpha-2-to-name
+  (are [country-name expected] (= expected (countries/alpha-2->name country-name))
+                               "se" :sweden
+                               "DE" :germany
+                               "Dm" :dominica
+                               "AA" nil                     ;; not existing
+                               ))
+
+
+(deftest alpha-3-to-name
+  (are [country-name expected] (= expected (countries/alpha-3->name country-name))
+                               "swe" :sweden
+                               "COG" :congo
+                               "PLW" :palau
+                               "AAA" nil                     ;; not existing
                                ))

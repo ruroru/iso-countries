@@ -7,7 +7,7 @@
 (s/def ::name string?)
 (s/def ::alpha-2 string?)
 (s/def ::alpha-3 string?)
-(s/def ::region string?)
+(s/def ::region keyword?)
 (s/def ::flag string?)
 (s/def ::numeric string?)
 (s/def ::region-code string?)
@@ -29,7 +29,7 @@
                                 :name          "Sweden"
                                 :numeric       "752"
                                 :official-name "Sweden"
-                                :region        "Europe"
+                                :region        :europe
                                 :region-code   "150"}
                                :cocos-keeling-islands
                                {:alpha-2       "CC"
@@ -38,7 +38,7 @@
                                 :name          "Cocos (Keeling) Islands"
                                 :numeric       "166"
                                 :official-name "Cocos (Keeling) Islands"
-                                :region        "Oceania"
+                                :region        :oceania
                                 :region-code   "009"}))
 
 

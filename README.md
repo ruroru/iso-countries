@@ -18,6 +18,7 @@ Add iso-countries to dependency list
 ```clojure
 (iso/get-country :tonga)
 ```
+
 ### Country and territory list
 
 | Name                                          |
@@ -264,7 +265,7 @@ Add iso-countries to dependency list
 | :uzbekistan                                   |
 | :vanuatu                                      |
 | :venezuela                                    |
-| :viet-nam                                     |
+| :vietnam                                      |
 | :virgin-islands-us                            |
 | :wallis-and-futuna                            |
 | :western-sahara                               |

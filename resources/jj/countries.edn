@@ -214,8 +214,8 @@
   :alpha-3       "SGP",
   :region-code   "142",
   :official-name "Singapore"},
- :viet-nam
- {:name          "Viet Nam",
+ :vietnam
+ {:name          "Vietnam",
   :alpha-2       "VN",
   :region        :asia,
   :numeric       "704",

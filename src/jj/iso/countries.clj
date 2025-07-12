@@ -3,23 +3,28 @@
             [clojure.java.io :as io]
             [clojure.string :as str])
   (:import (java.io FileNotFoundException InputStreamReader PushbackReader)
-           (java.net URL)))
+           (java.net URL)
+           (java.util WeakHashMap)))
 
+(def ^:private all-cache ^WeakHashMap (WeakHashMap. 1))
+(def ^:private cache ^WeakHashMap (WeakHashMap. 256))
 
 (defn get-all-countries []
-  (let [edn-file "jj/countries.edn"]
-    (if-let [url (io/resource edn-file)]
-      (let [edn (edn/read (PushbackReader. (InputStreamReader. (.openStream ^URL url))))]
-        (into {}
-              (map (fn [[k v]]
-                     (let [flag (apply str
-                                       (map #(String. (Character/toChars
-                                                        (+ 0x1F1E6 (- (int (Character/toUpperCase ^char %)) (int \A)))))
-                                            (:alpha-2 v)))]
-                       [k (assoc v :flag flag)]))
-                   edn)))
-      (throw (FileNotFoundException. (format "Resource not found: %s" edn-file))))))
-
+  (when (not (.containsKey ^WeakHashMap all-cache :all))
+    (let [edn-file "jj/countries.edn"]
+      (if-let [url (io/resource edn-file)]
+        (let [edn (edn/read (PushbackReader. (InputStreamReader. (.openStream ^URL url))))]
+          (.put ^WeakHashMap all-cache :all (into {}
+                                                  (map (fn [[k v]]
+                                                         (let [flag (apply str
+                                                                           (map #(String. (Character/toChars
+                                                                                            (+ 0x1F1E6 (- (int (Character/toUpperCase ^char %)) (int \A)))))
+                                                                                (:alpha-2 v)))]
+                                                           [k (assoc v :flag flag)]))
+                                                       edn))))
+        (throw (FileNotFoundException. (format "Resource not found: %s" edn-file))))))
+  (when (.containsKey ^WeakHashMap all-cache :all)
+    (.get ^WeakHashMap all-cache :all)))
 
 (defn get-country [country]
   "Returns all data related to a  country
@@ -37,38 +42,26 @@
   "
   ((get-all-countries) country))
 
-(defn alpha-2->name [country-name]
+(defn alpha-2->name [alpha2-code]
   "Returns country name as a keyword, if country is found, else returns nil
 
   for example:
   (alpha-2->name \"SE\") =>  :sweden"
-  (let [upper-case-name ^String (-> country-name
-                                    str/upper-case
-                                    )]
+  (let [upper-case-name ^String (-> alpha2-code
+                                    str/upper-case)]
+    (when (not (.containsKey ^WeakHashMap cache (keyword upper-case-name)))
+      (doseq [country (get-all-countries)]
+        (.put ^WeakHashMap cache (keyword (:alpha-2 (second country))) (first country))))
+    (.get ^WeakHashMap cache (keyword upper-case-name))))
 
-    (let [country (-> (filter (fn [[key value]]
-
-                                (.equals upper-case-name (value :alpha-2)))
-                              (get-all-countries))
-                      first)]
-
-      (when country
-        (first country)))))
-
-(defn alpha-3->name [country-name]
+(defn alpha-3->name [alpha3-code]
   "Returns country name as a keyword, if country is found, else returns nil
 
   for example:
   (alpha-3->name \"SWE\") =>  :sweden"
-  (let [upper-case-name ^String (-> country-name
-                                    str/upper-case
-                                    )]
-
-    (let [country (-> (filter (fn [[key value]]
-
-                                (.equals upper-case-name (value :alpha-3)))
-                              (get-all-countries))
-                      first)]
-
-      (when country
-        (first country)))))
+  (let [upper-case-name ^String (-> alpha3-code
+                                    str/upper-case)]
+    (when (not (.containsKey ^WeakHashMap cache (keyword upper-case-name)))
+      (doseq [country (get-all-countries)]
+        (.put ^WeakHashMap cache (keyword (:alpha-3 (second country))) (first country))))
+    (.get ^WeakHashMap cache (keyword upper-case-name))))

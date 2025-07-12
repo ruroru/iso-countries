@@ -134,7 +134,7 @@
   :alpha-3       "NFK",
   :region-code   "009",
   :official-name "Norfolk Island"},
- :united-states-of-america
+ :united-states
  {:name          "United States of America",
   :alpha-2       "US",
   :region        :americas,
@@ -855,14 +855,14 @@
   :alpha-3       "ARE",
   :region-code   "142",
   :official-name "United Arab Emirates"},
- :taiwan-province-of-china
- {:name          "Taiwan, Province of China",
+ :taiwan
+ {:name          "Taiwan",
   :alpha-2       "TW",
   :region        :asia,
   :numeric       "158",
   :alpha-3       "TWN",
   :region-code   "",
-  :official-name "Taiwan, Province of China"},
+  :official-name "Republic of China"},
  :austria
  {:name          "Austria",
   :alpha-2       "AT",
@@ -910,7 +910,7 @@
   :numeric       "626",
   :alpha-3       "TLS",
   :region-code   "142",
-  :official-name "Timor-Leste"},
+  :official-name "Democratic Republic of Timor-Leste"},
  :mayotte
  {:name          "Mayotte",
   :alpha-2       "YT",
@@ -935,8 +935,8 @@
   :alpha-3       "CAF",
   :region-code   "002",
   :official-name "Central African Republic"},
- :brunei-darussalam
- {:name          "Brunei Darussalam",
+ :brunei
+ {:name          "Brunei",
   :alpha-2       "BN",
   :region        :asia,
   :numeric       "096",
@@ -1391,14 +1391,14 @@
   :alpha-3       "TUR",
   :region-code   "142",
   :official-name "Türkiye"},
- :sint-maarten-dutch-part
- {:name          "Sint Maarten (Dutch part)",
+ :sint-maarten
+ {:name          "Sint Maarten",
   :alpha-2       "SX",
   :region        :americas,
   :numeric       "534",
   :alpha-3       "SXM",
   :region-code   "019",
-  :official-name "Sint Maarten (Dutch part)"},
+  :official-name "Sint Maarten"},
  :slovenia
  {:name          "Slovenia",
   :alpha-2       "SI",
@@ -1927,14 +1927,14 @@
   :alpha-3       "DOM",
   :region-code   "019",
   :official-name "Dominican Republic"},
- :saint-martin-french-part
- {:name          "Saint Martin (French part)",
+ :saint-martin
+ {:name          "Saint Martin",
   :alpha-2       "MF",
   :region        :americas,
   :numeric       "663",
   :alpha-3       "MAF",
   :region-code   "019",
-  :official-name "Saint Martin (French part)"},
+  :official-name "Saint Martin"},
  :nigeria
  {:name          "Nigeria",
   :alpha-2       "NG",

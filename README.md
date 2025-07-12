@@ -10,7 +10,7 @@ alpha-2 and alpha-3 codes, numeric codes, regional classifications, and unicode 
 Add iso-countries to dependency list
 
 ```clojure
-[org.clojars.jj/iso-countries "1.2.1"]
+[org.clojars.jj/iso-countries "1.2.2"]
 ```
 
 ## Usage

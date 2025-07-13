@@ -1,4 +1,4 @@
-(defproject org.clojars.jj/iso-countries "1.2.3"
+(defproject org.clojars.jj/iso-countries "1.2.4-SNAPSHOT"
   :description "iso-countries is a Clojure library designed to provide easy access to comprehensive ISO 3166-1 country data.
 
   This library aims to simplify the process of retrieving country-specific information, including official names,

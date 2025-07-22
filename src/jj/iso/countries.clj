@@ -65,3 +65,22 @@
       (doseq [country (get-all-countries)]
         (.put ^WeakHashMap cache (keyword (:alpha-3 (second country))) (first country))))
     (.get ^WeakHashMap cache (keyword upper-case-name))))
+
+(defn detect-country [country-code]
+  "Returns country name as a keyword, for a  given alpha2 or alpha3 code. If none found returns nil
+
+  for example:
+  (detect-country \"SWE\") =>  :sweden
+  (detect-country \"se\") =>  :sweden
+  "
+  (let [upper-case-name ^String (-> country-code
+                                    str/upper-case)]
+    (let [all-countries (get-all-countries)
+          country-result (first
+                           (filter (fn [[k v]]
+                                     (or
+                                       (= upper-case-name (:alpha-2 v))
+                                       (= upper-case-name (:alpha-3 v))))
+                                   all-countries))]
+      (when country-result
+        (first country-result)))))

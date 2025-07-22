@@ -58,3 +58,12 @@
                                "PLW" :palau
                                "AAA" nil                     ;; not existing
                                ))
+
+
+(deftest detect-country
+  (are [country-name expected] (= expected (countries/detect-country country-name))
+                               "swe" :sweden
+                               "DE" :germany
+                               "PLW" :palau
+                               "AAA" nil                     ;; not existing
+                               ))

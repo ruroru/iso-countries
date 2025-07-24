@@ -15,7 +15,7 @@ Add iso-countries to dependency list
 
 ## Usage
 
-```clojure
+k```clojure
 (iso/get-country :tonga)
 ```
 

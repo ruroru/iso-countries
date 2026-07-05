@@ -18,7 +18,7 @@
 (deftest get-all-countries
   (let [countries (countries/get-all-countries)]
     (is (s/valid? ::country-map countries))
-    (is (= 249 (count countries)))))
+    (is (= 250 (count countries)))))
 
 (deftest get-country
   (are [country-name expected] (= expected (countries/get-country country-name))

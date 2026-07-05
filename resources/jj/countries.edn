@@ -6,7 +6,15 @@
   :alpha-3       "DJI"
   :region-code   "002"
   :official-name "Djibouti"}
- :caribbean-netherlands
+ :kosovo
+ {:name          "Kosovo"
+  :alpha-2       "XK"
+  :region        :europe
+  :numeric       ""
+  :alpha-3       "XKK"
+  :region-code   "150"
+  :official-name "Republic of Kosovo"}
+  :caribbean-netherlands
  {:name          "caribbean-netherlands"
   :alpha-2       "BQ"
   :region        :americas
